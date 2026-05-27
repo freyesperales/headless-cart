@@ -1,0 +1,81 @@
+{
+  "name": "headless-cart",
+  "version": "0.1.0",
+  "description": "Backend-agnostic cart, wishlist and money primitives for React. Bring your own adapter (Woo, Shopify, Medusa, custom).",
+  "keywords": [
+    "cart",
+    "shopping-cart",
+    "wishlist",
+    "ecommerce",
+    "headless",
+    "react",
+    "nextjs",
+    "money",
+    "currency",
+    "typescript",
+    "optimistic-updates"
+  ],
+  "homepage": "https://github.com/freyesperales/headless-cart",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freyesperales/headless-cart.git"
+  },
+  "bugs": "https://github.com/freyesperales/headless-cart/issues",
+  "license": "MIT",
+  "author": "Francisco Reyes <freyesperales@users.noreply.github.com> (https://github.com/freyesperales)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js",
+      "require": "./dist/react/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "happy-dom": "^15.11.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

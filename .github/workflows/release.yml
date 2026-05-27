@@ -1,0 +1,35 @@
+name: Release to npm
+
+# Trigger: push a tag like `v0.1.0`. The job builds, tests, and publishes
+# the package to npm using NPM_TOKEN (set as a repo secret).
+#
+# To cut a release:
+#   1. Bump version in package.json
+#   2. Update CHANGELOG.md
+#   3. git tag v0.1.0 && git push --tags
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

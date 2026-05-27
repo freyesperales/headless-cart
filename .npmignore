@@ -1,0 +1,9 @@
+src/
+tests/
+examples/
+.github/
+tsup.config.ts
+tsconfig.json
+vitest.config.ts
+*.log
+.env*
